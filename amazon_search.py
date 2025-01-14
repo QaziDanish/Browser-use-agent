@@ -19,14 +19,13 @@ if not api_key:
 
 llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=SecretStr(api_key))
 agent = Agent(
-	task='Go to DevNatives.com and get me the names of CTO, COO and CEO',
+	task='Go to amazon.com, search for laptop, sort by best rating, and give me the price of the first result',
 	llm=llm,
 )
 
-
 async def main():
-	await agent.run(max_steps=12)
-	agent.create_history_gif()
+	await agent.run(max_steps=10)
+	input('Press Enter to continue...')
 
 
 asyncio.run(main())
